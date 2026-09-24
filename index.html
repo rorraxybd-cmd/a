@@ -1,1 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Global Financial Ecosystem & Accounting Lifecycle | RORRAXY</title>
+    
+    <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1PD_g_agcbmm7bbJTHoOWss8YtQ17LNsb=s400">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <style>
+        :root {
+            --bg-black: #030303;
+            --surface-bg: #090909;
+            --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --gold-solid: #d4af37;
+            --text-white: #ffffff;
+            --text-gray: #c0c0c0;
+            --font-luxury: 'Cinzel', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        *, *::before, *::after { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent; 
+        }
+        
+        html { 
+            width: 100%; 
+            background-color: var(--bg-black); 
+            scroll-behavior: smooth; 
+        }
+
+        body { 
+            width: 100%; 
+            max-width: 100vw;
+            min-height: 100vh; 
+            background-color: var(--bg-black); 
+            color: var(--text-white); 
+            font-family: var(--font-body); 
+            padding-top: 75px; 
+            padding-bottom: 50px; 
+            overflow-x: hidden; 
+            -webkit-font-smoothing: antialiased; 
+        }
+
+        h1, h2, h3, h4, .brand-title-main { font-family: var(--font-luxury); }
+
+        /* হেডার */
+        header.app-header {
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            padding: 10px 15px;
+            background: rgba(5, 5, 5, 0.95); 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000;
+            backdrop-filter: blur(12px); 
+            width: 100%; 
+            border-bottom: 1px solid rgba(212,175,55,0.15);
+        }
+        .brand-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            text-decoration: none; 
+        }
+        .logo { 
+            width: 38px; 
+            height: 38px; 
+            border-radius: 50%; 
+            object-fit: contain; 
+            animation: pulseLogo 3.5s infinite ease-in-out;
+        }
+        .brand-title-main { 
+            font-size: 0.95rem; 
+            font-weight: 900; 
+            background: var(--gold-gradient); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+        }
+
+        /* মেইন কন্টেইনার */
+        .main-wrapper { 
+            width: 100%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 15px; 
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* হিরো সেকশন */
+        .luxury-hero { 
+            background: var(--surface-bg); 
+            border-radius: 18px; 
+            padding: 30px 20px; 
+            text-align: center; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8); 
+            position: relative;
+            overflow: hidden;
+            animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .luxury-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: var(--gold-gradient);
+        }
+        .hero-title { 
+            font-size: 1.35rem; 
+            font-weight: 900; 
+            background: var(--gold-gradient); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            text-transform: uppercase; 
+            margin-bottom: 12px; 
+            letter-spacing: 1px; 
+            line-height: 1.4;
+        }
+        .hero-sub { 
+            font-size: 0.82rem; 
+            color: var(--text-gray); 
+            line-height: 1.7; 
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
+
+        /* ফ্লো সেকশন */
+        .ecosystem-flow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .flow-section-item {
+            background: var(--surface-bg);
+            border-radius: 16px;
+            padding: 20px 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        @media(min-width: 768px) {
+            .flow-section-item { padding: 25px; }
+        }
+        .flow-section-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(212,175,55,0.08);
+        }
+
+        .section-header-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-luxury);
+            line-height: 1.3;
+        }
+        .section-header-title i {
+            font-size: 0.95rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .points-grid-sub {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        @media(min-width: 768px) {
+            .points-grid-sub { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        }
+
+        .point-box {
+            background: rgba(255, 255, 255, 0.015);
+            padding: 14px 16px;
+            border-radius: 10px;
+            transition: 0.25s;
+        }
+        .point-box:hover {
+            background: rgba(212, 175, 55, 0.02);
+        }
+        .point-box strong {
+            color: var(--gold-solid);
+            font-size: 0.8rem;
+            display: block;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .point-box span {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        /* কমন গ্রাফ কন্টেইনার বক্স (নো বর্ডার স্টাইল) */
+        .analytics-graph-box {
+            background: #050505;
+            border-radius: 12px;
+            padding: 14px;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.9);
+            width: 100%;
+            overflow: hidden;
+        }
+        .graph-meta-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            color: var(--gold-solid);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ========================================================
+           প্রিমিয়াম ও লাইটওয়েট অ্যানিমেটেড গ্রাফসমূহ 
+           ======================================================== */
+
+        /* ১. ক্যাপিটাল ইনজেকশন */
+        .capital-donut-graph {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        .donut-wrapper {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: conic-gradient(var(--gold-solid) 0% 88%, #151515 88% 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            animation: rotateDonut 6s infinite linear;
+        }
+        .donut-inner {
+            width: 38px;
+            height: 38px;
+            background: #050505;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--gold-solid);
+        }
+        .capital-bars-split {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            min-width: 0;
+        }
+        .cap-mini-bar {
+            width: 100%;
+            height: 5px;
+            background: #121212;
+            border-radius: 2.5px;
+            overflow: hidden;
+        }
+        .cap-mini-fill {
+            height: 100%;
+            background: var(--gold-gradient);
+            border-radius: 2.5px;
+            animation: loadBarFull 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* ২. প্রকিউরমেন্ট ও ইনভেন্টরি */
+        .inventory-candlestick-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 48px;
+            gap: 6px;
+            padding-bottom: 4px;
+        }
+        .cs-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            justify-content: flex-end;
+            min-width: 0;
+        }
+        .cs-wick {
+            width: 1.5px;
+            background: var(--gold-solid);
+            opacity: 0.5;
+        }
+        .cs-body {
+            width: 75%;
+            background: var(--gold-gradient);
+            border-radius: 2px 2px 0 0;
+            animation: growBar 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transform-origin: bottom;
+        }
+
+        /* ৩. মার্কেটিং ও অপারেশন */
+        .marketing-line-graph {
+            position: relative;
+            height: 42px;
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+        }
+        .svg-curve {
+            width: 100%;
+            height: 38px;
+            overflow: visible;
+        }
+        .svg-curve path {
+            fill: none;
+            stroke: url(#goldGradientDef);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+            animation: drawLine 2.5s ease-in-out infinite alternate;
+        }
+
+        /* ৪. মাল্টি-চ্যানেল সেলস ও রেভিনিউ (রিফাইন্ড লাক্সারি লুক) */
+        .multichannel-luxury-dashboard {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .mc-metrics-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .mc-badge-live {
+            font-size: 0.62rem;
+            padding: 2px 8px;
+            background: rgba(212, 175, 55, 0.08);
+            border-radius: 4px;
+            color: var(--gold-solid);
+            font-weight: 700;
+        }
+        .multichannel-split-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            height: 45px;
+            padding-bottom: 3px;
+        }
+        .mc-bar-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            justify-content: flex-end;
+            gap: 4px;
+            min-width: 0;
+        }
+        .mc-bar-fill {
+            width: 100%;
+            background: var(--gold-gradient);
+            border-radius: 3px 3px 0 0;
+            animation: mcPulseSmooth 2s infinite ease-in-out alternate;
+        }
+        .mc-label-sub {
+            font-size: 0.58rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        /* ৫. এফিলিয়েট লেজার */
+        .affiliate-network-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+            position: relative;
+            padding: 0 5px;
+        }
+        .net-line {
+            position: absolute;
+            width: 90%;
+            height: 1.5px;
+            background: linear-gradient(90deg, transparent, var(--gold-solid), transparent);
+            left: 5%;
+            opacity: 0.4;
+        }
+        .net-node {
+            width: 12px;
+            height: 12px;
+            background: #050505;
+            border: 2px solid var(--gold-solid);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 10px rgba(212,175,55,0.4);
+            animation: nodeBlink 2s infinite alternate ease-in-out;
+        }
+
+        /* ৬. রিটার্ন ও রিফান্ড */
+        .refund-flow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .rf-track {
+            width: 100%;
+            height: 4px;
+            background: #101010;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+        .rf-fill-forward {
+            position: absolute;
+            height: 100%;
+            background: var(--gold-gradient);
+            border-radius: 2px;
+            animation: slideForward 2.2s infinite linear;
+        }
+        .rf-fill-reverse {
+            position: absolute;
+            height: 100%;
+            background: #fff;
+            border-radius: 2px;
+            opacity: 0.3;
+            animation: slideReverse 2.6s infinite linear;
+        }
+
+        /* ৭. ক্যাশ ফ্লো ও নেট প্রফিট (সম্পূর্ণ রি-ডিজাইন ও প্রিমিয়াম লুক) */
+        .cashflow-profit-dashboard {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .cf-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cf-pill {
+            font-size: 0.65rem;
+            padding: 3px 8px;
+            background: rgba(212, 175, 55, 0.08);
+            border-radius: 4px;
+            color: var(--gold-solid);
+            font-weight: 700;
+        }
+        .cashflow-elegant-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 5px;
+            height: 38px;
+            padding-bottom: 2px;
+        }
+        .cf-bar-item {
+            flex: 1;
+            background: var(--gold-gradient);
+            border-radius: 2px 2px 0 0;
+            animation: cfPulse 1.6s infinite ease-in-out alternate;
+            min-width: 0;
+        }
+        .net-profit-glow-bar {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: rgba(255, 255, 255, 0.01);
+            padding: 8px 10px;
+            border-radius: 8px;
+        }
+        .np-track {
+            width: 100%;
+            height: 5px;
+            background: #121212;
+            border-radius: 2.5px;
+            overflow: hidden;
+            position: relative;
+        }
+        .np-fill {
+            position: absolute;
+            height: 100%;
+            width: 82%;
+            background: var(--gold-gradient);
+            border-radius: 2.5px;
+            animation: loadBarFull 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* ৮. ট্যাক্স কমপ্লায়েন্স */
+        .tax-audit-scanner {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .audit-bar-track {
+            width: 100%;
+            height: 5px;
+            background: #121212;
+            border-radius: 2.5px;
+            overflow: hidden;
+            position: relative;
+        }
+        .audit-bar-active {
+            position: absolute;
+            height: 100%;
+            width: 45%;
+            background: var(--gold-gradient);
+            border-radius: 2.5px;
+            animation: scanWave 2.2s infinite linear;
+        }
+
+        /* ব্যাক বাটন (Updated Link to j.rarraxy.com) */
+        .back-ecosystem-btn {
+            display: block;
+            width: 100%;
+            max-width: 280px;
+            margin: 15px auto 0 auto;
+            background: var(--gold-gradient);
+            color: #000;
+            text-align: center;
+            padding: 13px 20px;
+            border-radius: 30px;
+            font-weight: 900;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            font-family: var(--font-luxury);
+            text-decoration: none;
+            box-shadow: 0 0 25px rgba(212,175,55,0.3);
+            transition: 0.3s ease;
+        }
+        .back-ecosystem-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 35px rgba(212,175,55,0.6);
+        }
+
+        /* অ্যানিমেশন কি-ফ্রেমসমূহ */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulseLogo {
+            0% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(212,175,55,0.3)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 8px rgba(212,175,55,0.5)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(212,175,55,0.3)); }
+        }
+        @keyframes rotateDonut {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes loadBarFull {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+        @keyframes growBar {
+            from { transform: scaleY(0); }
+            to { transform: scaleY(1); }
+        }
+        @keyframes drawLine {
+            0% { stroke-dashoffset: 300; }
+            100% { stroke-dashoffset: 0; }
+        }
+        @keyframes mcPulseSmooth {
+            0% { transform: scaleY(0.4); opacity: 0.5; }
+            100% { transform: scaleY(1); opacity: 1; }
+        }
+        @keyframes nodeBlink {
+            0% { transform: scale(0.9); box-shadow: 0 0 3px var(--gold-solid); }
+            100% { transform: scale(1.1); box-shadow: 0 0 12px var(--gold-solid); }
+        }
+        @keyframes slideForward {
+            0% { left: -50%; width: 30%; }
+            100% { left: 100%; width: 30%; }
+        }
+        @keyframes slideReverse {
+            0% { right: -50%; width: 25%; }
+            100% { right: 100%; width: 25%; }
+        }
+        @keyframes cfPulse {
+            0% { transform: scaleY(0.3); opacity: 0.5; }
+            100% { transform: scaleY(1); opacity: 1; }
+        }
+        @keyframes scanWave {
+            0% { left: -60%; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- হেডার -->
+    <header class="app-header">
+        <a href="https://j.rarraxy.com" class="brand-container">
+            <img src="https://lh3.googleusercontent.com/d/1PD_g_agcbmm7bbJTHoOWss8YtQ17LNsb=s400" alt="Logo" class="logo">
+            <span class="brand-title-main">RORRAXY ECOSYSTEM</span>
+        </a>
+    </header>
+
+    <div class="main-wrapper">
+        
+        <!-- হিরো সেকশন -->
+        <div class="luxury-hero">
+            <h1 class="hero-title">Global Financial Ecosystem & Accounting Lifecycle</h1>
+            <p class="hero-sub">
+                End-to-End Transaction, Revenue, and Tax Compliance Architecture meticulously engineered for Single Vendor, Multi-Vendor, and Service-Based Operations.
+            </p>
+        </div>
+
+        <!-- মূল ফ্লো কন্টেইনার -->
+        <div class="ecosystem-flow-container">
+            
+            <!-- ১. ক্যাপিটাল ও ইনফ্রাস্ট্রাকচার -->
+            <div class="flow-section-item">
+                <div class="section-header-title">
+                    <i class="fa-solid fa-vault"></i> Capital Injection & Infrastructure Setup
+                </div>
+                <div class="points-grid-sub">
+                    <div class="point-box">
+                        <strong>Initial Capital Inflow</strong>
+                        <span>Recording seed investments, owner's equity, or initial working capital to establish foundational ledger.</span>
+                    </div>
+                    <div class="point-box">
+                        <strong>Platform Setup Expenditure</strong>
+                        <span>Capturing initial capital expenditures (CapEx) such as software deployment and domain infrastructure.</span>
+                    </div>
+                </div>
+                <div class="analytics-graph-box">
+                    <div class="graph-meta-info"><span>Capital Allocation Donut Matrix</span><span>88% Deployed</span></div>
+                    <div class="capital-donut-graph">
+                        <div class="donut-wrapper">
+                            <div class="donut-inner">88%</div>
+                        </div>
+                        <div class="capital-bars-split">
+                            <div class="cap-mini-bar"><div class="cap-mini-fill" style="width: 90%;"></div></div>
+                            <div class="cap-mini-bar"><div class="cap-mini-fill" style="width: 75%;"></div></div>
+                            <div class="cap-mini-bar"><div class="cap-mini-fill" style="width: 88%;"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ২. প্রকিউরমেন্ট ও ইনভেন্টরি -->
+            <div class="flow-section-item">
+                <div class="section-header-title">
+                    <i class="fa-solid fa-boxes-stacked"></i> Procurement & Inventory Valuation
+                </div>
+                <div class="points-grid-sub">
+                    <div class="point-box">
+                        <strong>Cost of Goods Sold (COGS)</strong>
+                        <span>Tracking raw material procurement, manufacturing costs, or wholesale inventory acquisition expenses.</span>
+                    </div>
+                    <div class="point-box">
+                        <strong>Real-Time Stock Valuation</strong>
+                        <span>Maintaining live inventory asset values across storage points to ensure absolute balance sheet accuracy.</span>
+                    </div>
+                </div>
+                <div class="analytics-graph-box">
+                    <div class="graph-meta-info"><span>Stock Candlestick Chart</span><span>Active Index</span></div>
+                    <div class="inventory-candlestick-chart">
+                        <div class="cs-col"><div class="cs-wick" style="height: 38px;"></div><div class="cs-body" style="height: 25px;"></div></div>
+                        <div class="cs-col"><div class="cs-wick" style="height: 42px;"></div><div class="cs-body" style="height: 35px;"></div></div>
+                        <div class="cs-col"><div class="cs-wick" style="height: 30px;"></div><div class="cs-body" style="height: 20px;"></div></div>
+                        <div class="cs-col"><div class="cs-wick" style="height: 46px;"></div><div class="cs-body" style="height: 40px;"></div></div>
+                        <div class="cs-col"><div class="cs-wick" style="height: 40px;"></div><div class="cs-body" style="height: 30px;"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ৩. অপারেশনাল ও মার্কেটিং খরচ -->
+            <div class="flow-section-item">
+                <div class="section-header-title">
+                    <i class="fa-solid fa-chart-line"></i> Operational & Marketing Tracking
+                </div>
+                <div class="points-grid-sub">
+                    <div class="point-box">
+                        <strong>Digital Marketing Investments</strong>
+                        <span>Logging paid acquisition costs dynamically across global advertising networks and search channels.</span>
+                    </div>
+                    <div class="point-box">
+                        <strong>Platform Operational Expenses</strong>
+                        <span>Categorizing recurring overheads, system maintenance costs, and operational SaaS subscriptions.</span>
+                    </div>
+                </div>
+                <div class="analytics-graph-box">
+                    <div class="graph-meta-info"><span>Ad-Spend Trend Curve Graph</span><span>Real-Time Stream</span></div>
+                    <div class="marketing-line-graph">
+                        <svg class="svg-curve" viewBox="0 0 300 40">
+                            <defs>
+                                <linearGradient id="goldGradientDef" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#bf953f" />
+                                    <stop offset="50%" stop-color="#fcf6ba" />
+                                    <stop offset="100%" stop-color="#aa771c" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M 0,32 Q 75,4 150,20 T 300,8" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ৪. মাল্টি-চ্যানেল সেলস ও রেভিনিউ -->
+            <div class="flow-section-item">
+                <div class="section-header-title">
+                    <i class="fa-solid fa-globe"></i> Multi-Channel Sales & Revenue Generation
+                </div>
+                <div class="points-grid-sub">
+                    <div class="point-box">
+                        <strong>Gross Revenue Inflow</strong>
+                        <span>Capturing total transaction amounts via secure international payment gateways instantly.</span>
+                    </div>
+                    <div class="point-box">
+                        <strong>Vendor & Service Billing</strong>
+                        <span>Automated multi-vendor commission splits, direct routing, and milestone-based service billing.</span>
+                    </div>
+                </div>
+                <div class="analytics-graph-box">
+                    <div class="graph-meta-info"><span>Multi-Channel Gateway Stream</span><span>Live Sync</span></div>
+                    <div class="multichannel-luxury-dashboard">
+                        <div class="mc-metrics-top">
+                            <span style="font-size: 0.68rem; color: var(--text-gray);">Channel Performance Matrix</span>
+                            <span class="mc-badge-live">96.8% Optimized</span>
+                        </div>
+                        <div class="multichannel-split-bars">
+                            <div class="mc-bar-col">
+                                <div class="mc-bar-fill" style="height: 65%; animation-delay: 0.1s;"></div>
+                                <span class="mc-label-sub">Visa</span>
+                            </div>
+                            <div class="mc-bar-col">
+                                <div class="mc-bar-fill" style="height: 85%; animation-delay: 0.2s;"></div>
+                                <span class="mc-label-sub">Master</span>
+                            </div>
+                            <div class="mc-bar-col">
+                                <div class="mc-bar-fill" style="height: 50%; animation-delay: 0.15s;"></div>
+                                <span class="mc-label-sub">AMEX</span>
+                            </div>
+                            <div class="mc-bar-col">
+                                <div class="mc-bar-fill" style="height: 95%; animation-delay: 0.3s;"></div>
+                                <span class="mc-label-sub">Stripe</span>
+                            </div>
+                            <div class="mc-bar-col">
+                                <div class="mc-bar-fill" style="height: 75%; animation-delay: 0.2s;"></div>
+                                <span class="mc-label-sub">PayPal</span>
+                            </div>
+                            <div class="mc-bar-col">
+                                <div class="mc-bar-fill" style="height: 100%; animation-delay: 0.35s;"></div>
+                                <span class="mc-label-sub">Direct</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ৫. এফিলিয়েট লেজার -->
+            <div class="flow-section-item">
+                <div class="section-header-title">
+                    <i class="fa-solid fa-handshake"></i> Affiliate Ledger & Commission Accounting
+                </div>
+                <div class="points-grid-sub">
+                    <div class="point-box">
+                        <strong>Referral Tracking</strong>
+                        <span>Monitoring successful conversions and traffic generated precisely via unique affiliate links.</span>
+                    </div>
+                    <div class="point-box">
+                        <strong>Automated Commissions</strong>
+                        <span>Calculating and segregating partner commissions in real-time, holding balances securely for payouts.</span>
+                    </div>
+                </div>
+                <div class="analytics-graph-box">
+                    <div class="graph-meta-info"><span>Affiliate Node Network Map</span><span>Sync Active</span></div>
+                    <div class="affiliate-network-box">
+                        <div class="net-line"></div>
+                        <div class="net-node"></div>
+                        <div class="net-node"></div>
+                        <div class="net-node"></div>
+                        <div class="net-node"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ৬. রিটার্ন ও রিফান্ড -->
+            <div class="flow-section-item">
+                <div class="section-header-title">
+                    <i class="fa-solid fa-rotate-left"></i> Returns, Refunds & Logistics Adjustments
+                </div>
+                <div class="points-grid-sub">
+                    <div class="point-box">
+                        <strong>Return Shipping Recoveries</strong>
+                        <span>Accounting for return delivery and transit transport costs borne exclusively during reversals.</span>
+                    </div>
+                    <div class="point-box">
+                        <strong>Refund Processing Engine</strong>
+                        <span>Automatically reversing product sales values from gross revenue streams upon inspection.</span>
+                    </div>
+                </div>
+                <div class="analytics-graph-box">
+                    <div class="graph-meta-info"><span>Bi-directional Reverse Flow Map</span><span>Optimized</span></div>
+                    <div class="refund-flow-container">
+                        <div class="rf-track"><div class="rf-fill-forward"></div></div>
+                        <div class="rf-track"><div class="rf-fill-reverse"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ৭. ক্যাশ ফ্লো ও নেট প্রফিট (রিফাইন্ড লাক্সারি ডিজাইন) -->
+            <div class="flow-section-item">
+                <div class="section-header-title">
+                    <i class="fa-solid fa-chart-pie"></i> Cash Flow & Net Profit Analytics
+                </div>
+                <div class="points-grid-sub">
+                    <div class="point-box">
+                        <strong>Profit Calculations</strong>
+                        <span>Automatically deducting COGS, marketing, vendor payouts, and overheads to derive true net profit.</span>
+                    </div>
+                    <div class="point-box">
+                        <strong>Live Cash Flow Ledger</strong>
+                        <span>Maintaining a live, transparent record of all cash inflows and outflows for absolute visibility.</span>
+                    </div>
+                </div>
+                <div class="analytics-graph-box">
+                    <div class="graph-meta-info"><span>Financial Health Dashboard</span><span>Live Matrix</span></div>
+                    <div class="cashflow-profit-dashboard">
+                        <div>
+                            <div class="cf-top-row" style="margin-bottom: 6px;">
+                                <span style="font-size: 0.68rem; color: var(--text-gray);">Cash Velocity Pulse</span>
+                                <span class="cf-pill">+ $48.5K Net</span>
+                            </div>
+                            <div class="cashflow-elegant-bars">
+                                <div class="cf-bar-item" style="height: 60%; animation-delay: 0.1s;"></div>
+                                <div class="cf-bar-item" style="height: 85%; animation-delay: 0.2s;"></div>
+                                <div class="cf-bar-item" style="height: 45%; animation-delay: 0.15s;"></div>
+                                <div class="cf-bar-item" style="height: 95%; animation-delay: 0.3s;"></div>
+                                <div class="cf-bar-item" style="height: 70%; animation-delay: 0.25s;"></div>
+                                <div class="cf-bar-item" style="height: 100%; animation-delay: 0.35s;"></div>
+                                <div class="cf-bar-item" style="height: 80%; animation-delay: 0.2s;"></div>
+                            </div>
+                        </div>
+                        <div class="net-profit-glow-bar">
+                            <div class="cf-top-row">
+                                <span style="font-size: 0.68rem; color: var(--text-gray);">True Net Profit Margin</span>
+                                <span style="font-size: 0.68rem; color: var(--gold-solid); font-weight: 700;">82.4%</span>
+                            </div>
+                            <div class="np-track">
+                                <div class="np-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ৮. ট্যাক্স কমপ্লায়েন্স -->
+            <div class="flow-section-item">
+                <div class="section-header-title">
+                    <i class="fa-solid fa-file-invoice-dollar"></i> Automated Invoicing & Tax Compliance
+                </div>
+                <div class="points-grid-sub">
+                    <div class="point-box">
+                        <strong>Dynamic Invoicing</strong>
+                        <span>Instantly issuing professional, itemized digital invoices and receipts for every transaction.</span>
+                    </div>
+                    <div class="point-box">
+                        <strong>Regional Tax Engine (VAT/GST)</strong>
+                        <span>Structuring and segregating applicable taxes according to regional rules for corporate compliance.</span>
+                    </div>
+                </div>
+                <div class="analytics-graph-box">
+                    <div class="graph-meta-info"><span>Tax Compliance Audit Scanner</span><span>Synced & Verified</span></div>
+                    <div class="tax-audit-scanner">
+                        <div class="audit-bar-track"><div class="audit-bar-active"></div></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ফুটার বাটন (রিটার্ন লিংক আপডেটেড) -->
+        <a href="https://j.rarraxy.com" class="back-ecosystem-btn">Return to Ecosystem Hub</a>
+
+    </div>
+
+</body>
+</html>
